@@ -2,11 +2,15 @@
         String str1 = in.nextLine();
         String answer = "";
         
-        char[] word = str1.toCharArray();
-        for( char i : word ){
-            if(i >= 97) answer += i-32
-            else answer += i+32
+        Stack<Character> stack = new Stack<>();
+
+        for( char i : str1.toCharArray() ){
+            if( i == ')' ) while(stack.pop() != '(')
+            else stack.push(i)
         }
 
+        for( int i =0; i<stack.size();i++ ){
+            answer = stack.get(i) + answer
+        }
 
         System.out.println(answer);
