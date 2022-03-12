@@ -28,7 +28,6 @@ package stack;
 import java.util.*;
 
 public class BracketInString{
-    
 
     public static void main(String[] args){
 
