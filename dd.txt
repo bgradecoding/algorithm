@@ -1,16 +1,38 @@
+public static void main(String[] args){
+
         Scanner in = new Scanner(System.in);
         String str1 = in.nextLine();
-        String answer = "";
-        
+        int answer = 0;
+
         Stack<Character> stack = new Stack<>();
 
-        for( char i : str1.toCharArray() ){
-            if( i == ')' ) while(stack.pop() != '(')
-            else stack.push(i)
+        for ( char i : str1.toCharArray() ){
+            if( i == '-' ){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                int temp = a - b;
+                stack.push(temp);
+            }else if( i == '+' ){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                int temp = a + b;
+                stack.push(temp);
+            }else if( i == '/' ){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                int temp = a / b;
+                stack.push(temp);
+            }else if( i == '*' ){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                int temp = a * b;
+                stack.push(temp);
+            }else{
+                stack.push(i);
+            }
         }
-
-        for( int i =0; i<stack.size();i++ ){
-            answer = stack.get(i) + answer
-        }
-
+        answer = stack.pop();
+        
         System.out.println(answer);
+
+    }
