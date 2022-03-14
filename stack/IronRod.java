@@ -64,18 +64,19 @@ public class IronRod {
         Stack<Character> stack = new Stack<>();
         char[] temp = str1.toCharArray();
         for( int i =0; i< temp.length; i++ ){
-            if( temp[i] == '(' ){
-                if( i != temp.length -1 && temp[i+1] == ')' ){
+            if( temp[i] == ')' ){
+                if(  temp[i-1] == '(' ){
+                    stack.pop();    
                     answer += stack.size();
-                    i++;
                 }else{
-                    stack.push(temp[i]);
+                    answer += 1;
+                    stack.pop();
                 }
             }else{
-                answer += 1;
-                stack.pop()
+                stack.push(temp[i]);
             }
         }
+        System.out.println(answer);
 
     }
 }

@@ -1,38 +1,23 @@
-public static void main(String[] args){
+    public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
         String str1 = in.nextLine();
         int answer = 0;
 
         Stack<Character> stack = new Stack<>();
-
-        for ( char i : str1.toCharArray() ){
-            if( i == '-' ){
-                int a = Integer.parseInt(stack.pop());
-                int b = Integer.parseInt(stack.pop());
-                int temp = a - b;
-                stack.push(temp);
-            }else if( i == '+' ){
-                int a = Integer.parseInt(stack.pop());
-                int b = Integer.parseInt(stack.pop());
-                int temp = a + b;
-                stack.push(temp);
-            }else if( i == '/' ){
-                int a = Integer.parseInt(stack.pop());
-                int b = Integer.parseInt(stack.pop());
-                int temp = a / b;
-                stack.push(temp);
-            }else if( i == '*' ){
-                int a = Integer.parseInt(stack.pop());
-                int b = Integer.parseInt(stack.pop());
-                int temp = a * b;
-                stack.push(temp);
+        char[] temp = str1.toCharArray();
+        for( int i =0; i< temp.length; i++ ){
+            if( temp[i] == '(' ){
+                if( i != temp.length -1 && temp[i+1] == ')' ){
+                    answer += stack.size();
+                    i++;
+                }else{
+                    stack.push(temp[i]);
+                }
             }else{
-                stack.push(i);
+                answer += 1;
+                stack.pop()
             }
         }
-        answer = stack.pop();
-        
-        System.out.println(answer);
 
     }
