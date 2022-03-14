@@ -1,23 +1,17 @@
     public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
-        String str1 = in.nextLine();
+        int str1 = in.nextInt();
+        int str2 = in.nextInt();
         int answer = 0;
 
-        Stack<Character> stack = new Stack<>();
-        char[] temp = str1.toCharArray();
-        for( int i =0; i< temp.length; i++ ){
-            if( temp[i] == '(' ){
-                if( i != temp.length -1 && temp[i+1] == ')' ){
-                    answer += stack.size();
-                    i++;
-                }else{
-                    stack.push(temp[i]);
-                }
-            }else{
-                answer += 1;
-                stack.pop()
-            }
+        Queue<Integer> queue = new Queue<>();
+        for( int i = 0; i<str1; i++ ) queue.offer(i);
+
+        while( queue.size() != 1 ){
+            for(int i =0; i<str2; i++) queue.offer(queue.poll());
+            queue.poll();
         }
+        answer = queue.poll();
 
     }
