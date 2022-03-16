@@ -1,18 +1,27 @@
     public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
-        String str1 = in.nextLine();
-        String str2 = in.nextLine();
-        String answer = "YES";
+        int str1 = in.nextInt();
+        int str2 = in.nextInt();
 
-        Queue<Character> queue = new LinkedList<>();
-        for( char i : str1.toCharArray() ) queue.offer(i);
-
-        for( char i : str2.toCharArray() ){
-            if( queue.contains(i) && i != queue.poll() ) answer = "NO";
+        int[] arr = new int[str1];
+        for(int i =0; i<n; i++){
+            arr[i] = in.nextInt();
         }
 
+        int answer = 0;
 
-        answer = queue.poll();
 
+
+    
+
+    }
+
+    public class Patient {
+        int index;
+        int dangerIndex;
+        public Patient( int id , int danger ){
+            this.index = id;
+            this.dangerIndex = danger;
+        }
     }
