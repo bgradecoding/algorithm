@@ -45,6 +45,8 @@ N명의 대기목록 순서의 환자 위험도가 주어지면, 대기목록상
 
 package queue;
 
+import java.util.*;
+
 public class Emergency {
     public static void main(String[] args){
 
@@ -53,11 +55,11 @@ public class Emergency {
         int str2 = in.nextInt();
 
         int[] arr = new int[str1];
-        for(int i =0; i<n; i++){
+        for(int i =0; i<str1; i++){
             arr[i] = in.nextInt();
         }
 
-        int answer = 1;
+        int answer = 0;
 
         Queue<Patient> queue = new LinkedList<>();
         for(int i = 0; i<str1; i++){
@@ -68,26 +70,26 @@ public class Emergency {
             Patient tmp = queue.poll();
             for(Patient x : queue){
                 if(x.dangerIndex > tmp.dangerIndex){
-                    queue.add(tmp);
+                    queue.offer(tmp);
                     tmp = null;
                     break;
                 }
             }
             if(tmp !=null){
-                if(tmp.index == str2) return answer;
-                else answer++;
+                answer++;
+                if(tmp.index == str2) break;
             }
         }
     
-
+        System.out.println(answer);
     }
 
-    public class Patient {
-        int index;
-        int dangerIndex;
-        public Patient( int id , int danger ){
-            this.index = id;
-            this.dangerIndex = danger;
-        }
+}
+class Patient {
+    int index;
+    int dangerIndex;
+    public Patient( int index , int dangerIndex ){
+        this.index = index;
+        this.dangerIndex = dangerIndex;
     }
 }
