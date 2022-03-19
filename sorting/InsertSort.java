@@ -1,4 +1,8 @@
-public static void main(String[] args){
+package sorting;
+
+import java.util.*;
+public class InsertSort {
+    public static void main(String[] args){
 
         Scanner in = new Scanner(System.in);
         int str1 = in.nextInt();
@@ -9,13 +13,13 @@ public static void main(String[] args){
         }
         int temp = 0;
         for(int i = 1; i<str1; i++){
-            temp = answer[i]
-            int j = 0;
-            for( j = i-1; j>0; j--){
-                if(answer[j]>temp) answer[j+1] = answer[j]
+            temp = answer[i];
+            int j;
+            for( j = i-1; j>=0; j--){
+                if(answer[j] > temp) answer[j+1] = answer[j];
                 else break;
             }
-            answer[j+1] = temp
+            answer[j+1] = temp;
         }
 
 
@@ -24,3 +28,4 @@ public static void main(String[] args){
         }
 
     }
+}
